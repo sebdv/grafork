@@ -1,0 +1,78 @@
+<%include header%>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+
+     <li>
+      <div id="inspector">
+        <h3 class="nombre">nodo0</h3>
+        <h4>X: <input type="number" id="nodo_x" value="0"></h4>
+        <h4>Y: <input type="number" id="nodo_y" value="0"></h4>
+        <h4>Peso: <input type="number" id="nodo_peso" value="0"></h4>
+        <h4>Etiqueta: <input type="text" id="nodo_label" value=""></h4>
+        <h4>Data: <textarea id="nodo_data"></textarea></h4>
+        <button class="btn btn-danger btn-xs eliminar">Eliminar</button>
+      </div>
+     </li>
+
+      <!-- <li><img style="border:1px solid black;margin:auto;margin-bottom:50px" data-src="holder.js/200x130/#fff:#000/text:o-o-o-o" class="img-responsive" alt="Generic placeholder thumbnail"></li> -->
+
+      <li style="text-align:center">
+        <!-- Large button group -->
+        <div class="btn-group">
+          <button class="btn btn-default btn-md dropdown-toggle boton-algor" type="button" data-toggle="dropdown">Aplicar algoritmo <span class="caret"></span></button>
+          <ul class="dropdown-menu" style="text-align:left">
+            <li><a href=#>Djistra</a></li>
+            <li><a href=#>Morocotopo</a></li>
+            <li><a href=#>Nogatonga</a></li>
+          </ul>
+        </div>
+        <br>
+        <br>
+        <div class="btn-group">
+            <button class="btn btn-default btn-md" type="button" data-toggle="dropdown">Conectar</button>
+            <button class="btn btn-default btn-md" type="button" data-toggle="dropdown">Explorar</button>
+        </div>
+
+     </li>
+
+ </ul>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Diálogo de Compartir -->
+<div class="modal fade dialogo-compartir" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="mySmallModalLabel">Compartir grafo "<%=nombre%>"</h4>
+        </div>
+        <div class="modal-body">
+          Ingresar amigos a compartir: <input type="text" id="amigo-compartir">
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+
+
+
+<script type="text/javascript">
+
+	$(function(){
+		Grafork.iniciar({c: [io, '<%=HOSTPUBLICO+':'+PUERTOPUBLICO%>'], sesion:'<%=sesion%>', grafo_id:'<%=grafo_id%>', nombre:'<%=nombre%>'}).dibujarGrafo({
+		nodos: [<%=nodos%>],
+		aristas: [<%-aristas%>],
+	})});
+
+</script>
+<div id="grafo"> </div>
+
+<%include footer%>

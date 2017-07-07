@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf8>
+  <title><%if(css_base=='grafos'){%>Grafork — Inicio<%}else{%><%=nombre?nombre:'Sin título'%> — Grafork<%}%></title>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/bower/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/bower/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+  <script type="text/javascript" src="/bower/watch/src/watch.min.js"></script>
+  <script type="text/javascript" src="/js/drag.js"></script>
+  <script type="text/javascript" src="/js/grafork-core.js"></script>
+  <script type="text/javascript" src="/js/grafork-util.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/home.css">
+  <link rel="stylesheet" type="text/css" href="/bower/bootstrap/dist/css/bootstrap.min.css">
+  <%if (css_base){%><link rel="stylesheet" type="text/css" href="/css/base-<%=css_base%>.css"><%}%>
+
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">menú</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Grafork <% if(css_base=='grafo') {%>&nbsp; |</a>
+       <a class="navbar-brand cambiaTitulo" href="javascript:Grafork.cambiarTitulo()" style="color:#eee"><%=nombre?nombre:'Sin título'%></a>
+        <!-- <button type="button" class="btn btn-default btn-xs" style="float:left;margin-top:14px" onclick="Grafork.guardarGrafo()">Guardar</button> -->
+        <span class="txt-guardando"></span>
+        <% } else {%> </a> <%}%>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+        <li class="dropdown">
+          <a data-toggle="dropdown" href="#" class="navbar-brand minombre"><%=user.nombre%></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <% if(css_base=='grafo') {%>
+            <li><a href="#" data-toggle="modal" data-target=".dialogo-compartir">Compartir grafo...</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Inicio</a></li>
+            <%}%>
+            <li><a href="#">Perfil</a></li>
+            <li><a href="/logout">Salir</a></li>
+          </ul>
+        </li>
+
+        <li> <a><span class="glyphicon glyphicon-cloud estado-conexion" data-toggle="tooltip" data-placement="left" title="La conexión tiene problemas"></span></a></li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+
