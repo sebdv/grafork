@@ -33,6 +33,11 @@ mongo
 > db.users.insert({username: 'test', password: 'test', nombre: 'John Doe'})
 ```
 
+**Launch**
+```sh
+LOCAL=1 DEV=1 node .
+```
+
 **Disclaimer:**
 
 A lot of stuff is still in spanish.

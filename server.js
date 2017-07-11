@@ -125,7 +125,7 @@ app.get('/:modulo?/:submodulo?', function(req, res) {
 					user: req.user,
 					grafos: r,
 					nombre: '',
-					HOSTPUBLICO: process.env.LOCAL? os.hostname() : hostpublico,
+					HOSTPUBLICO: process.env.LOCAL? 'localhost' : hostpublico,
 					PUERTOPUBLICO: process.env.LOCAL? p : 80,
 					user: req.user,
 					sesion: req.user._id, //usado por socket.io, CAMBIAR ESTO, hay q evitar q el uid vaya en cookies
@@ -188,7 +188,7 @@ app.get('/:modulo?/:submodulo?', function(req, res) {
 					}
 					res.render(__dirname+'/web/grafo.html',{
 						css_base:'grafo',
-						HOSTPUBLICO: process.env.LOCAL? os.hostname() : hostpublico,
+						HOSTPUBLICO: process.env.LOCAL? 'localhost' : hostpublico,
 						PUERTOPUBLICO: process.env.LOCAL? p : 80,
 						user: req.user,
 						sesion: req.user._id, //usado por socket.io, CAMBIAR ESTO, hay q evitar q el uid vaya en cookies
@@ -486,8 +486,8 @@ if (process.env.LOCAL && !process.env.DEV) { //local
 
 
 	init = function(reinit) {
-		fraseSC = '   The Adjacency Matrix Has You @ http://'+os.hostname()+':'+p+'   ';
-		frase = ('   The Adjacency Matrix Has You '+('> ').grey+('http://'+os.hostname()+':'+p).yellow.bold+'   ').bold.blackBG.cyan;
+		fraseSC = '   The Adjacency Matrix Has You @ http://'+'localhost'+':'+p+'   ';
+		frase = ('   The Adjacency Matrix Has You '+('> ').grey+('http://'+'localhost'+':'+p).yellow.bold+'   ').bold.blackBG.cyan;
 		left = Math.floor((process.stdout.columns/2) - (fraseSC.length/2)); //calcular centrado del texto
 		
 		cursor(1,1)
@@ -507,7 +507,7 @@ if (process.env.LOCAL && !process.env.DEV) { //local
 	}
 	_log = console.log;
 	_cur = function() {}
-	_log(2, 'iniciado en http://'+os.hostname()+':'+p)
+	_log(2, 'iniciado en http://'+'localhost'+':'+p)
 }
 
 
